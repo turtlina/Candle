@@ -4,9 +4,12 @@ import android.media.MediaPlayer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.StrictMode
+import android.util.Log
 import android.widget.SeekBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         // Start the media player
         playBtn.setOnClickListener{
             if(pause){
@@ -26,10 +30,24 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayer.start()
                 pause = false
                 Toast.makeText(this,"media playing", Toast.LENGTH_SHORT).show()
+                Log.d("TAG", "this is media playing msg")
             }else{
-                mediaPlayer = MediaPlayer.create(applicationContext, R.raw.sample)
-                mediaPlayer.start()
+//                mediaPlayer = MediaPlayer.create(applicationContext, R.raw.sample)
+//                mediaPlayer.start()
                 Toast.makeText(this,"media playing", Toast.LENGTH_SHORT).show()
+                Log.d("Tag", "this is else position")
+                mediaPlayer = MediaPlayer()
+                mediaPlayer.setOnPreparedListener { mp ->
+                    mp.start()
+                    Log.d("TAG", "[+] OnPrepared!")
+                }
+                try{
+                    mediaPlayer.setDataSource("http://urban180.com/wp-content/uploads/2017/09/olaide-Bambi_urban180.com_-1.mp3")
+                    mediaPlayer.prepare()
+                }catch (e:IOException){
+                    Log.d("TAG","The file does not exist"+e)
+                    Toast.makeText(this,"Thei file does not exist", Toast.LENGTH_SHORT).show()
+                }
             }
             initiallizeSeekBar()
             playBtn.isEnabled = false
@@ -43,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "end", Toast.LENGTH_SHORT).show()
             }
         }
+
         // Pause the media player
         pauseBtn.setOnClickListener{
             if(mediaPlayer.isPlaying){
@@ -107,6 +126,7 @@ class MainActivity : AppCompatActivity() {
         }
         handler.postDelayed(runnable, 1000)
     }
+
 }
 
 // Creating an extension property to get the media player time duration in seconds
