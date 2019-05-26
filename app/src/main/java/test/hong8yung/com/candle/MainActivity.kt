@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 try{
                     mediaPlayer.setDataSource("http://urban180.com/wp-content/uploads/2017/09/olaide-Bambi_urban180.com_-1.mp3")
-                    mediaPlayer.prepare()
+                    mediaPlayer.prepare() // prepareasync()
                 }catch (e:IOException){
                     Log.d("TAG","The file does not exist"+e)
                     Toast.makeText(this,"Thei file does not exist", Toast.LENGTH_SHORT).show()
