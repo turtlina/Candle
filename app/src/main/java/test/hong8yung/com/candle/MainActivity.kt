@@ -1,5 +1,6 @@
 package test.hong8yung.com.candle
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.wifi.WifiManager
@@ -21,12 +22,13 @@ class MainActivity : AppCompatActivity() {
     private var handler:Handler = Handler()
     private var pause:Boolean = false
 
-    val wifiManager = this.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-    val wifiLock: WifiManager.WifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "mylock")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val wifiManager:WifiManager = getApplicationContext().getSystemService(Context.WIFI_SERVICE) as WifiManager
+        val wifiLock: WifiManager.WifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "mylock")
 
         // Start the media player
         playBtn.setOnClickListener{
