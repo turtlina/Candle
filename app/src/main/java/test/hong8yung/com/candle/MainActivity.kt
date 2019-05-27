@@ -1,9 +1,12 @@
 package test.hong8yung.com.candle
 
+import android.content.Context
 import android.media.MediaPlayer
+import android.net.wifi.WifiManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.PowerManager
 import android.os.StrictMode
 import android.util.Log
 import android.widget.SeekBar
@@ -18,10 +21,12 @@ class MainActivity : AppCompatActivity() {
     private var handler:Handler = Handler()
     private var pause:Boolean = false
 
+    val wifiManager = this.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+    val wifiLock: WifiManager.WifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL, "mylock")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         // Start the media player
         playBtn.setOnClickListener{
@@ -34,15 +39,18 @@ class MainActivity : AppCompatActivity() {
             }else{
 //                mediaPlayer = MediaPlayer.create(applicationContext, R.raw.sample)
 //                mediaPlayer.start()
+                if(!wifiLock.isHeld()) wifiLock.acquire()
                 Toast.makeText(this,"media playing", Toast.LENGTH_SHORT).show()
                 Log.d("Tag", "this is else position")
                 mediaPlayer = MediaPlayer()
+                mediaPlayer.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
                 mediaPlayer.setOnPreparedListener { mp ->
                     mp.start()
                     Log.d("TAG", "[+] OnPrepared!")
                 }
                 try{
                     mediaPlayer.setDataSource("http://urban180.com/wp-content/uploads/2017/09/olaide-Bambi_urban180.com_-1.mp3")
+
                     mediaPlayer.prepare() // prepareasync()
                 }catch (e:IOException){
                     Log.d("TAG","The file does not exist"+e)
@@ -91,6 +99,7 @@ class MainActivity : AppCompatActivity() {
                 tv_due.text = ""
                 Toast.makeText(this, "media stop", Toast.LENGTH_SHORT).show()
             }
+            if(wifiLock.isHeld()) wifiLock.release()
         }
 
         // Seek bar change listener
