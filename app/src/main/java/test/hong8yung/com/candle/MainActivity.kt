@@ -2,6 +2,7 @@ package test.hong8yung.com.candle
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.wifi.WifiManager
 import android.support.v7.app.AppCompatActivity
@@ -70,6 +71,11 @@ class MainActivity : AppCompatActivity() {
                 stopBtn.isEnabled = false
                 Toast.makeText(this, "end", Toast.LENGTH_SHORT).show()
             }
+        }
+        // Next Activity test
+        nextBtn.setOnClickListener{
+            val nextIntent = Intent(this, SecondActivity::class.java)
+            startActivity(nextIntent)
         }
 
         // Pause the media player
