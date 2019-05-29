@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         // Next Activity test
         nextBtn.setOnClickListener{
             val nextIntent = Intent(this, SecondActivity::class.java)
+            nextIntent.putExtra("nameKey", "nachoi")
             startActivity(nextIntent)
         }
 
