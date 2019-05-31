@@ -40,7 +40,7 @@ class SecondActivity :AppCompatActivity(){
     private fun initializePlayer() {
         val trackSelector = DefaultTrackSelector()
         exoplayer = ExoPlayerFactory.newSimpleInstance(baseContext, trackSelector)
-        player_view.player = exoplayer
+        player_view_tmp.player = exoplayer
 
         val userAgent = Util.getUserAgent(baseContext, "Exo")
         val mediaUri = Uri.parse("http://urban180.com/wp-content/uploads/2017/09/olaide-Bambi_urban180.com_-1.mp3")
