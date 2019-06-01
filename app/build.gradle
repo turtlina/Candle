@@ -35,5 +35,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
-    implementation 'com.google.android.exoplayer:extension-ima:2.9.6'
 }

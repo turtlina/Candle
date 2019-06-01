@@ -3,8 +3,19 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:id="@+id/root_layout">
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="0dp"
+                 android:id="@+id/topmenu_container">
+    </FrameLayout>
+    <fragment android:name="test.hong8yung.com.candle.TopMenuFragment"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/top_menu"/>
     <LinearLayout android:layout_width="match_parent" android:layout_height="0dp"
                   android:id="@+id/fragment_container"
                   android:layout_weight="1"
-                  android:orientation="vertical"/>
+                  android:orientation="vertical" android:gravity="bottom|end"/>
+    <fragment android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:name="test.hong8yung.com.candle.PlayerFragment"
+              />
 </android.support.constraint.ConstraintLayout>
