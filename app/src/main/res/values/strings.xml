@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Candle</string>
+    <string name="sub_activity">Sub Activity :</string>
 </resources>
