@@ -13,11 +13,9 @@ class HomeActivity : AppCompatActivity(){
         val playerFragment = PlayerFragment()
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
-        //transaction.replace(R.id.topmenu_container, topMenuFragment)
-        //transaction.commit()
-        transaction.replace(R.id.fragment_container, playerFragment)
-        transaction.addToBackStack(null)
+//        transaction.replace(R.id.fragment_container, playerFragment)
+//        transaction.addToBackStack(null)
 
-        transaction.commit()
+//        transaction.commit()
     }
 }
