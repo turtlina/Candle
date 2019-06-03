@@ -29,29 +29,35 @@ class TopMenuFragment : Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        tab_layout.setup(viewPager)
+        tab_layout.setupWithViewPager(pager)
         demoCollectionPagerAdapter = DemoCollectionPagerAdapter(childFragmentManager)
+        pager.adapter = demoCollectionPagerAdapter
     }
 }
 
 
 class DemoCollectionPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
-    override fun getCount(): Int = 100
+    override fun getCount(): Int = 3
     override fun getItem(i: Int): Fragment {
         val fragment = DemoObjctFragment()
         fragment.arguments = Bundle().apply{
             putInt(ARG_OBJECT, i+1)
         }
+        return fragment
+    }
+
+    override fun getPageTitle(position: Int): CharSequence {
+        return "OBJECT ${(position +1)}"
     }
 }
-
+private const val ARG_OBJECT = "object"
 class DemoObjctFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tab_object, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        arguments?.takeIf{it.containsKey((ARG_OBJECT)}?.apply {
+        arguments?.takeIf{it.containsKey(ARG_OBJECT)}?.apply {
             textView.text = getInt(ARG_OBJECT).toString()
         }
     }

@@ -9,8 +9,8 @@ class HomeActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val topMenuFragment = TopMenuFragment()
-        val playerFragment = PlayerFragment()
+//        val topMenuFragment = TopMenuFragment()
+//        val playerFragment = PlayerFragment()
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
 //        transaction.replace(R.id.fragment_container, playerFragment)
