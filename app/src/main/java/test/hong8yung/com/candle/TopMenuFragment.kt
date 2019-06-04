@@ -37,8 +37,9 @@ class TopMenuFragment : Fragment(){
 
 
 class DemoCollectionPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
+    private val fragmentTitleList = mutableListOf("Home","Chart","Board")
     override fun getCount(): Int = 3
-    override fun getItem(i: Int): Fragment {
+    override fun getItem(i: Int): Fragment? {
         val fragment = DemoObjctFragment()
         fragment.arguments = Bundle().apply{
             putInt(ARG_OBJECT, i+1)
@@ -47,7 +48,7 @@ class DemoCollectionPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapte
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return "OBJECT ${(position +1)}"
+        return fragmentTitleList[position]
     }
 }
 private const val ARG_OBJECT = "object"

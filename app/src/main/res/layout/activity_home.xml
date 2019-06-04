@@ -15,7 +15,9 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_weight="8"></FrameLayout>
+            android:layout_weight="8" app:layout_constraintStart_toEndOf="@id/top_menu">
+
+    </FrameLayout>
     <fragment
             android:name="test.hong8yung.com.candle.PlayerFragment"
             android:layout_width="match_parent" android:layout_height="wrap_content"
