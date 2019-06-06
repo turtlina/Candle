@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomExoMediaButton">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+
+    <style name="CustomExoMediaButton_Pause">
+        <item name="android:src">@drawable/ic_pause_circle_filled</item>
+    </style>
+
 </resources>
