@@ -3,6 +3,7 @@ package test.hong8yung.com.candle
 import android.content.ComponentName
 import android.content.Context
 import android.graphics.Color
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -22,6 +23,7 @@ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelection
 import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
@@ -33,11 +35,14 @@ class PlayerFragment : Fragment(){
     private var playbackStateBuilder : PlaybackStateCompat.Builder? = null
     private var mediaSession: MediaSessionCompat? = null
 
+
     private val trackSelectorFactory: TrackSelection.Factory = AdaptiveTrackSelection.Factory()
     private val trackSelector:TrackSelector = DefaultTrackSelector(trackSelectorFactory)
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
+
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
