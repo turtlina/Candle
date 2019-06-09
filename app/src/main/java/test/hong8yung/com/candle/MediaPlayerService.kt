@@ -22,7 +22,6 @@ class MediaPlayerService : Service(), AudioManager.OnAudioFocusChangeListener, P
     override fun onCreate() {
         super.onCreate()
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        notificationManager = PlayerNotificationManager(context.ser)
 
     }
     override fun onAudioFocusChange(focusChange: Int) {
@@ -50,8 +49,6 @@ class MediaPlayerService : Service(), AudioManager.OnAudioFocusChangeListener, P
 
     override fun onUnbind(intent: Intent?): Boolean {
         if(mSession == null){
-            mSession.release()
-            mSession.s
         }
 
         return super.onUnbind(intent)
