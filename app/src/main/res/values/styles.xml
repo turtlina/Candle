@@ -14,8 +14,4 @@
     </style>
 
 
-    <style name="CustomExoMediaButton_Pause">
-        <item name="android:src">@drawable/ic_pause_circle_filled</item>
-    </style>
-
 </resources>
